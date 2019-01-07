@@ -1,0 +1,14 @@
+<ngb-accordion #acc="ngbAccordion">
+  <ngb-panel *ngFor="let item of displayData;let idx=index" id="toggle-{{idx+1}}"  title="{{item.category|titlecase}}">
+    <ng-template ngbPanelContent>
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel *ngFor="let sub_cat of item.sub_category;let i=index"  title="{{sub_cat.sub_category}}" id="toggle-{{i+1}}">
+              <ng-template ngbPanelContent>
+                <app-product *ngFor="let p of sub_cat.products" [data]="p"></app-product>
+      
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
